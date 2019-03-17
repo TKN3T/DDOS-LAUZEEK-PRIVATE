@@ -41,7 +41,7 @@ int make_socket(char *host, char *port) {
 	}
 	if(servinfo)
 		freeaddrinfo(servinfo);
-	//fprintf(stderr, "[Conectando -> %s:%s]\n", host, port);
+	#fprintf(stderr, "[Conectando -> %s:%s]\n", host, port);
 	return sock;
 }
 
@@ -68,9 +68,9 @@ void attack(char *host, char *port, int id) {
 				sockets[x] = make_socket(host, port);
 			} else
 //				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
-			//fprintf(stderr, "[%i: Atacando]\n", id);
+			#fprintf(stderr, "[%i: Atacando]\n", id);
 		}
-		fprintf(stderr, "[%i: Atacando]\n", id);
+		#fprintf(stderr, "[%i: Atacando]\n", id);
 		usleep(300000);
 	}
 }
